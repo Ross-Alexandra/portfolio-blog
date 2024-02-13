@@ -1,0 +1,20 @@
+{
+  "name": "portfolio-blog",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "deploy": "firebase deploy"
+  },
+  "devDependencies": {
+    "fast-glob": "^3.3.2",
+    "firebase": "^10.8.0",
+    "sass": "^1.70.0",
+    "typescript": "^5.2.2",
+    "vite": "^5.1.0",
+    "vite-plugin-handlebars": "^2.0.0"
+  }
+}
