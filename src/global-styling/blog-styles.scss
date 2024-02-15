@@ -1,0 +1,50 @@
+@use "sass:meta";
+@import "./variables.scss";
+
+@include meta.load-css("highlight.js/styles/a11y-dark");
+
+// Overrides for the default styles of hljs code blocks
+code.hljs {
+    background-color: #000;
+    border-radius: 1.5rem;
+
+    margin-block: 1.5rem;
+}
+
+code {
+    background-color: #000;
+    border-radius: 0.5rem;
+    padding: 0.25rem 0.5rem;
+}
+
+p + p {
+    margin-top: 2rem;
+}
+
+img {
+    display: block;
+
+    max-width: 100%;
+    height: auto;
+    margin: 1rem auto;
+}
+
+thead tr {
+    background-color: $layer-color;
+}
+
+table {
+    border-collapse: collapse;
+    width: fit-content;
+    margin-block: 2rem;
+}
+
+td, th {
+    padding: 0.5rem 3rem;
+    text-align: left;
+}
+
+tbody tr:nth-child(even) {
+    background-color: $layer-color;
+}
+

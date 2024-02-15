@@ -1,1 +1,13 @@
-<nav>This is the nav bar :)</nav>
+<nav>
+    {{> logo width=50}}
+</nav>
+
+<script type="module">
+    const nav = document.querySelector('nav');
+
+    document.addEventListener('scroll', (e) => {
+        const scrollTop = e.target.scrollingElement.scrollTop;
+
+        nav.setAttribute('hidden', scrollTop > 100);
+    });
+</script>

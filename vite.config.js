@@ -1,22 +1,26 @@
 import { resolve } from 'path';
 import handlebars from 'vite-plugin-handlebars';
-import glob from 'fast-glob';
+import { getBlogFiles } from './build-utils/get-blog-files';
+import { getParsedMarkdown } from './build-utils/get-parsed-markdown';
 
 /**
- * Configures the dev server to redirect requests with a trailing slash to the
- * same URL without the trailing slash. This is to ensure that the development
- * server behaves the same way as the production server, which should be trailing
- * slash agnostic.
+ * Configures the dev server to redirect requests without a trailing slash to the
+ * same URL with the trailing slash. This is to ensure that the development
+ * server behaves the same way as the production server, which should automatically
+ * append a trailing slash to all URLs that don't have an extension.
  */
-function noTrailingSlashPlugin() {
+function appendTrailingSlash() {
     return {
-        name: 'no-trailing-slash',
+        name: 'append-trailing-slash',
         configureServer(server) {
             return () => {
                 server.middlewares.use((req, res, next) => {
-                    if (req.originalUrl.endsWith('/') && req.originalUrl !== '/') {
+                    const hasTrailingSlash = req.originalUrl.endsWith('/');
+                    const hasExtension = /\.[^/]*$/.test(req.originalUrl);
+
+                    if (!hasExtension && !hasTrailingSlash) {
                         res.writeHead(301, {
-                            Location: req.originalUrl.slice(0, -1)
+                            Location: req.originalUrl + '/',
                         });
                         res.end();
                     } else {
@@ -53,12 +57,7 @@ function notFoundPlugin() {
         }
     };
 
-}
-
-const blogs = glob.sync('blogs/**/*.html');
-const blogEntries = Object.fromEntries(blogs.map((blog) => {
-    return [blog.replace('blogs/', '').replace('.html', ''), blog];
-}));
+}    
 
 export default {
     // Don't allow vite to redirect to index.html when a 404 is encountered
@@ -68,9 +67,10 @@ export default {
         // https://github.com/alexlafroscia/vite-plugin-handlebars
         handlebars({
             partialDirectory: resolve(__dirname, 'src/partials'),
+            context: getParsedMarkdown,
         }),
-        noTrailingSlashPlugin(),
-        notFoundPlugin(),
+        appendTrailingSlash(),
+        // notFoundPlugin(),
     ],
     assetsInclude: [
         // This allows us to import the HTML files in the web components
@@ -79,13 +79,17 @@ export default {
         // JavaScript files, so that we don't need to make any additional
         // requests to the server to get the HTML files.
         'src/components/**/*.html',
+        
+        // This allows us to import the Markdown files in the web components
+        // directly as strings, so that we can use them as templates.
+        'blogs/**/*.md',
     ],
     build: {
         rollupOptions: {
             input: {
                 main: resolve(__dirname, 'index.html'),
                 notFound: resolve(__dirname, 'not-found.html'),
-                ...blogEntries,
+                ...getBlogFiles(),
             },
         }
     }

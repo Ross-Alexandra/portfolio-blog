@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {{> meta pageTitle=pageTitle }}
+        <link rel="stylesheet" href="/src/global-styling/blog-styles.scss" />
+  </head>
+  <body>
+    {{> header }}
+
+    <main>
+        <div id="blog">{{{ content-key }}}</div>
+    </main>
+
+    {{> footer }}
+    <script type="module" src="/src/blog.ts"></script>
+  </body>
+</html>

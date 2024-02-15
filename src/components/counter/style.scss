@@ -4,8 +4,6 @@
 
     border-radius: 10px;
     padding: 5px 10px;
-    font-size: 1.5em;
-
 
     cursor: pointer;
     &:hover {
@@ -15,12 +13,4 @@
     &:active {
         filter: brightness(0.8);
     }
-}
-
-.counter-button[data-role="increment"] {
-    background-color: #00ff00;
-}
-
-.counter-button[data-role="decrement"] {
-    background-color: #ff0000;
 }

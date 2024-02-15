@@ -1,1 +1,1 @@
-import './counter';
+export {};
