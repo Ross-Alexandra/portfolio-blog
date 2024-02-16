@@ -7,10 +7,25 @@
     {{> header }}
 
     <main>
-        <x-counter></x-counter>
+        <div class="hero">
+            <p class="page-accent">BLOG</p>
+            <h1>Learning is a Journey; Intentional Practice is a Catalyst</h1>
+            <a>Why this blog exists</a>
+        </div>
+
+        <div class="filters">
+            <button class="filter-button" data-filter="all" data-active="true">All Posts</button>
+            <button class="filter-button" data-filter="tech-plans" data-active="false">Tech Exploration Plans</button>
+            <button class="filter-button" data-filter="tech-debriefs" data-active="false">Tech Debriefs</button>
+            <button class="filter-button" data-filter="code-and-musings" data-active="false">Code &amp; Musings</button>
+        </div>
+
+        <hr />
     </main>
 
+    {{> window-scroller }}
     {{> footer }}
+    <script type="module" src="/src/global.ts"></script>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

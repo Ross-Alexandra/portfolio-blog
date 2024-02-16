@@ -36,7 +36,7 @@ h1, h2, h3, h4 {
 p,
 span,
 button,
-a,
+a:not(.no-style),
 li,
 label,
 input,
@@ -49,6 +49,11 @@ pre {
     font-size: 1.6rem;
     line-height: 1.6;
     margin-bottom: 0.5rem;
+}
+
+a.no-style {
+    text-decoration: none;
+    color: inherit;
 }
 
 button {
@@ -71,6 +76,7 @@ button.outline {
 
 p.legal {
     font-size: 1.3rem;
+    margin-top: 0px;
 }
 
 body {
@@ -105,12 +111,37 @@ nav {
         display: contents;
     }
 
-    svg {
-        margin-left: 1rem;
+    .content {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    
+        width: min(2000px, 100%);
+        margin-inline: auto;
+        padding-inline: 1rem;
+
+        .nav-links {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 2rem;
+
+            h4.nav-link {
+                margin-bottom: 0px;
+            }
+
+            .external-wrapper {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+            }
+        }
     }
 }
 
-nav[hidden="true"] {
+nav[data-hidden="true"] {
     top: -$header-height;
 }
 
@@ -140,7 +171,6 @@ li {
 blockquote {
     margin: 2rem 0;
     padding: 1rem;
-    background-color: $layer-color;
     border-left: 5px solid $font-color;
 
     p {
@@ -148,4 +178,26 @@ blockquote {
         font-size: 1.8rem;
         margin-bottom: 0px;
     }
+}
+
+#scroll-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 100;
+
+    background-color: $font-color;
+    color: $background-color;
+    padding: 0.5rem;
+    border-radius: 50%;
+
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+
+    cursor: pointer;
+}
+
+#scroll-to-top[data-hidden="true"] {
+    opacity: 0;
+    cursor: default;
 }

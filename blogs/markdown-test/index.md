@@ -1,4 +1,4 @@
-# Welcome to the hidden markdown test file. This is a test of the markdown rendering system.
+# Welcome to the hidden markdown test file. This is a test of the markdown compilation system.
 It was written in markdown
 
 And now:

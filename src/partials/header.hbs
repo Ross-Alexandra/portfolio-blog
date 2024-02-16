@@ -1,13 +1,13 @@
 <nav>
-    {{> logo width=50}}
+    <div class="content">
+        {{> icons/logo width=50}}
+        <div class="nav-links">
+            <h4 class="nav-link">
+                <a class="no-style" href="https://rossalexandra.com">
+                    Portfolio
+                    {{> icons/external-link size=13 }}
+                </a>
+            </h2>
+        </div>
+    </div>
 </nav>
-
-<script type="module">
-    const nav = document.querySelector('nav');
-
-    document.addEventListener('scroll', (e) => {
-        const scrollTop = e.target.scrollingElement.scrollTop;
-
-        nav.setAttribute('hidden', scrollTop > 100);
-    });
-</script>
