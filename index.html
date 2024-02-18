@@ -2,25 +2,63 @@
 <html lang="en">
   <head>
     {{> meta pageTitle="Ross's Blog" }}
+    <link rel="stylesheet" href="/src/main.scss" />
   </head>
   <body>
     {{> header }}
 
     <main>
         <div class="hero">
-            <p class="page-accent">BLOG</p>
-            <h1>Learning is a Journey; Intentional Practice is a Catalyst</h1>
-            <a>Why this blog exists</a>
+            <div class="content">
+                <p class="page-accent">BLOG</p>
+                <h1>Learning is a Journey; Intentional Practice is a Catalyst</h1>
+                <a href="/blogs/intentional-practice">Why this blog exists</a>
+            </div>
         </div>
 
-        <div class="filters">
-            <button class="filter-button" data-filter="all" data-active="true">All Posts</button>
-            <button class="filter-button" data-filter="tech-plans" data-active="false">Tech Exploration Plans</button>
-            <button class="filter-button" data-filter="tech-debriefs" data-active="false">Tech Debriefs</button>
-            <button class="filter-button" data-filter="code-and-musings" data-active="false">Code &amp; Musings</button>
+        <div class="filters" data-mobile-expanded="false">
+            <button data-post-filter="all" aria-pressed="true">All Posts</button>
+            <button data-post-filter="exploration" aria-pressed="false">Tech Exploration Plans</button>
+            <button data-post-filter="debrief" aria-pressed="false">Tech Debriefs</button>
+            <button data-post-filter="other" aria-pressed="false">Code &amp; Musings</button>
         </div>
 
         <hr />
+
+        <div class="content posts">
+            <div class="post" data-post-type="exploration" data-hidden="false">
+                <img src="https://unsplash.it/800/400" alt="Placeholder Image" />
+                <div class="post-info">
+                    <h2>Lorem ipsum dolor sit amet</h2>
+                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <a>Read More</a>
+                </div>
+            </div>
+            <div class="post" data-post-type="debrief" data-hidden="false">
+                <img src="https://unsplash.it/800/400" alt="Placeholder Image" />
+                <div class="post-info">
+                    <h2>Lorem ipsum dolor sit amet</h2>
+                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <a>Read More</a>
+                </div>
+            </div>
+            <div class="post" data-post-type="other" data-hidden="false">
+                <img src="https://unsplash.it/800/400" alt="Placeholder Image" />
+                <div class="post-info">
+                    <h2>Lorem ipsum dolor sit amet</h2>
+                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <a>Read More</a>
+                </div>
+            </div>
+            <div class="post" data-post-type="other" data-hidden="false">
+                <img src="https://unsplash.it/800/400" alt="Placeholder Image" />
+                <div class="post-info">
+                    <h2>Lorem ipsum dolor sit amet</h2>
+                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <a>Read More</a>
+                </div>
+            </div>
+        </div>
     </main>
 
     {{> window-scroller }}

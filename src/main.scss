@@ -1,0 +1,244 @@
+@import './global-styling/variables.scss';
+
+.hero {
+    padding: 5rem 0px;
+    background-color: $layer-light-color;
+    
+    @media (max-width: 750px) {
+        padding: 3rem 0px;
+    }
+    
+    .content {
+        width: 100%;
+    }
+
+    .page-accent {
+        color: $accent-color;
+        font-weight: 700;
+    }
+
+    h1 {
+        font-size: 10rem;
+        font-weight: 700;
+        color: $font-color;
+        margin-bottom: 1rem;
+    
+        max-width: 20ch;
+
+        @media (max-width: 1200px) {
+            font-size: 6rem;
+            max-width: 100%;
+        }
+
+        @media (max-width: 750px) {
+            font-size: 4rem;
+        }
+
+        @media (max-width: 575px) {
+            font-size: 3rem;
+        }
+
+        @media (max-width: 400px) {
+            font-size: 2.5rem;
+        }
+    }
+
+    a {
+        color: $accent-color;
+        text-decoration: underline;
+        font-weight: 700; 
+
+        &:visited {
+            color: $accent-color;
+        }
+    }
+}
+
+.filters {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+
+    padding: 2rem 0px;
+
+    @media (max-width: 750px) {
+        width: 100%;
+        gap: 0px;
+
+        --all-row: minmax(0px, 0fr);
+        --exploration-row: minmax(0px, 0fr);
+        --debrief-row: minmax(0px, 0fr);
+        --other-row: minmax(0px, 0fr);
+
+        display: grid;
+        grid-template-rows: var(--all-row) var(--exploration-row) var(--debrief-row) var(--other-row);
+        transition: grid-template-rows 200ms ease-in-out, gap 200ms ease-in-out;
+
+        &[data-mobile-expanded=true] {
+            gap: 0.5rem;
+            --all-row: minmax(0px, 1fr);
+            --exploration-row: minmax(0px, 1fr);
+            --debrief-row: minmax(0px, 1fr);
+            --other-row: minmax(0px, 1fr);
+        }
+
+        &:has([data-post-filter="all"][aria-pressed="true"]) {
+            --all-row: minmax(0px, 1fr);
+        }    
+
+        &:has([data-post-filter="exploration"][aria-pressed="true"]) {
+            --exploration-row: minmax(0px, 1fr);
+        }
+        
+        &:has([data-post-filter="debrief"][aria-pressed="true"]) {
+            --debrief-row: minmax(0px, 1fr);
+        }
+
+        &:has([data-post-filter="other"][aria-pressed="true"]) {
+            --other-row: minmax(0px, 1fr);
+        }
+
+        &::after {
+            position: absolute;
+            content: "• • •";
+
+            font-size: 1.4rem;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        &[data-mobile-expanded=true]::after {
+            display: none;
+        }
+ 
+        button {
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            font-size: 2rem;
+
+            &::after {
+                display: none;
+            }
+        }
+    }
+
+    button {
+        appearance: none;
+        border: unset;
+        background-color: unset;
+        color: $font-color;
+        margin-bottom: 0px;
+
+        position: relative;
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: -3px;
+            left: 0px;
+            right: 0px;
+            height: 1px;
+            background-color: $accent-color;
+
+            transition: transform 200ms ease-in-out, opacity 200ms ease-in-out;
+        }
+    }
+
+    button[aria-pressed="true"]::after {
+        opacity: 1;
+        transform: scaleX(1);
+    }
+
+    button[aria-pressed="false"] {
+        opacity: 0.75;
+        cursor: pointer;
+
+        &::after {
+            transform: scaleX(0);
+        }
+    }
+}
+
+hr {
+    margin: 0px 0px 1rem 0px;
+    border: 0;
+    border-top: 1px solid $layer-light-color;
+}
+
+.content.posts {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(300px, 1fr));
+    place-items: center;
+
+    gap: 2rem;
+    width: 100%;
+
+    @media (max-width: 1000px) {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .post {
+        display: grid;
+        grid-auto-flow: row;
+        gap: 1rem;
+
+        img {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+        }
+
+        // In desktop environments, we want to highlight the first non-hidden
+        // post.
+        @media (min-width: 1000px) {
+            // Set the styling for the first non-hidden post.
+            &[data-hidden="false"] {
+                display: contents;
+    
+                img {
+                    // The width should be 2 cells wide, plus the gap between the
+                    // first and second post.
+                    width: calc(200% + 2rem);
+                    grid-column: 1 / 2;
+                    aspect-ratio: 16 / 9;
+                    object-fit: cover;
+    
+                    justify-self: start;
+                }
+    
+                div {
+                    grid-column: 3;
+                    padding: 0px 1rem;
+                    align-self: start;
+                }
+            }
+    
+            // Remove the styling by resetting it for all subsequent non-hidden
+            // posts.
+            &[data-hidden="false"] ~ [data-hidden="false"] {
+                display: grid;
+        
+                img {
+                    width: 100%;
+                    aspect-ratio: 16 / 9;
+                    object-fit: cover;
+                }
+                
+                div {
+                    grid-column: auto;
+                    padding: unset;
+                    align-self: auto;
+                }
+            }
+        }
+    }
+
+    .post[data-hidden="true"] {
+        display: none;
+    }
+}
