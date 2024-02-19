@@ -2,6 +2,7 @@
     "title": "Web Components with Vite",
     "article_type": "other",
     "category": "Code",
+    "authored_on_clean": "Feb 14 2024",
     "authored_on": "Feb 14<sup>th</sup>, 2024",
     "summary": "Usually when working with vanilla web components, you need to include a template string within your JavaScript to define the component's HTML. In this article, I explore using Vite to build web components with a separate HTML file.",
     "thumbnail": "/blog-thumbnails/web-components-with-vite.png",

@@ -9,5 +9,8 @@ export function getBlogConfigs() {
         return config;
     });
 
+    configs.sort((a, b) => {
+        return new Date(b.authored_on_clean).getTime() - new Date(a.authored_on_clean).getTime();
+    });
     return configs;
 }
