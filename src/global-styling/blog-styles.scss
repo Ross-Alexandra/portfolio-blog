@@ -48,3 +48,10 @@ tbody tr:nth-child(even) {
     background-color: $layer-color;
 }
 
+h1, h2, h3, h4 {
+    margin-top: 2rem;
+}
+
+h1:first-of-type {
+    margin-top: 0;
+}
