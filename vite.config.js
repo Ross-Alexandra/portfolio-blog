@@ -1,8 +1,8 @@
 import { resolve } from 'path';
 import handlebars from 'vite-plugin-handlebars';
 import { getBlogFiles } from './build-utils/get-blog-files';
-import { getParsedMarkdown } from './build-utils/get-parsed-markdown';
 import { getHandlebarsConfig } from './build-utils/get-handlebars-context';
+import moment from 'moment';
 
 /**
  * Configures the dev server to redirect requests without a trailing slash to the
@@ -69,6 +69,18 @@ export default {
         handlebars({
             partialDirectory: resolve(__dirname, 'src/partials'),
             context: getHandlebarsConfig,
+            helpers: {
+                formatDate: (dateStr) => {
+                    const date = moment(dateStr);
+                    const dateOrdinal = date.format('Do');
+
+                    // Strip the number out of dateOrdinal so that we just have 
+                    // st, nd, rd, or th.
+                    const onlyOrdinal =  dateOrdinal.match(/[^\d]+/g)[0];
+
+                    return date.format(`MMM D[<sup>${onlyOrdinal}</sup>], YYYY`);
+                }
+            }
         }),
         appendTrailingSlash(),
         notFoundPlugin(),
