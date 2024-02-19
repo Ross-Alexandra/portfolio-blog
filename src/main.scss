@@ -42,16 +42,6 @@
             font-size: 2.5rem;
         }
     }
-
-    a {
-        color: $accent-color;
-        text-decoration: underline;
-        font-weight: 700; 
-
-        &:visited {
-            color: $accent-color;
-        }
-    }
 }
 
 .filters {
@@ -193,6 +183,22 @@ hr {
             object-fit: cover;
         }
 
+        .post-info {
+            h4 {
+                font-size: 1.6rem;
+                color: $accent-color;
+                font-weight: 700;
+                text-transform: uppercase;
+                margin-bottom: 0px;
+            }
+
+            p.authored-date {
+                font-size: 1.3rem;
+                margin-bottom: 2rem;
+            }
+        }
+
+
         // In desktop environments, we want to highlight the first non-hidden
         // post.
         @media (min-width: 1000px) {
@@ -211,7 +217,7 @@ hr {
                     justify-self: start;
                 }
     
-                div {
+                .post-info {
                     grid-column: 3;
                     padding: 0px 1rem;
                     align-self: start;
@@ -229,7 +235,7 @@ hr {
                     object-fit: cover;
                 }
                 
-                div {
+                .post-info {
                     grid-column: auto;
                     padding: unset;
                     align-self: auto;
@@ -240,5 +246,28 @@ hr {
 
     .post[data-hidden="true"] {
         display: none;
+    }
+
+    .post[data-hidden="false"] ~ .no-posts {
+        display: none;
+    }
+
+    .no-posts {
+        grid-column: 1 / -1;
+        
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        h3 {
+            font-size: 2rem;
+            color: $font-color;
+        }
+
+        p {
+            font-size: 1.4rem;
+            color: $font-color;
+        }
     }
 }

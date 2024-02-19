@@ -51,6 +51,16 @@ pre {
     margin-bottom: 0.5rem;
 }
 
+a {
+    color: $primary-color;
+    text-decoration: underline;
+    font-weight: 700; 
+
+    &:visited {
+        color: $primary-color;
+    }
+}
+
 a.no-style {
     text-decoration: none;
     color: inherit;

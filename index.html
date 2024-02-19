@@ -26,37 +26,22 @@
         <hr />
 
         <div class="content posts">
-            <div class="post" data-post-type="exploration" data-hidden="false">
-                <img src="https://unsplash.it/800/400" alt="Placeholder Image" />
-                <div class="post-info">
-                    <h2>Lorem ipsum dolor sit amet</h2>
-                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    <a>Read More</a>
+            {{#each config.posts}}
+                <div class="post" data-post-type="{{article_type}}" data-hidden="false">
+                    <img src="{{thumbnail}}" alt="Article Thumbnail" />
+                    <div class="post-info">
+                        <h4>{{category}}</h4>
+                        <p class="authored-date">{{{authored_on}}}</p>
+                        <h2>{{title}}</h2>
+                        <p>{{summary}}</p>
+                        <a href="{{link}}">Read More</a>
+                    </div>
                 </div>
-            </div>
-            <div class="post" data-post-type="debrief" data-hidden="false">
-                <img src="https://unsplash.it/800/400" alt="Placeholder Image" />
-                <div class="post-info">
-                    <h2>Lorem ipsum dolor sit amet</h2>
-                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    <a>Read More</a>
-                </div>
-            </div>
-            <div class="post" data-post-type="other" data-hidden="false">
-                <img src="https://unsplash.it/800/400" alt="Placeholder Image" />
-                <div class="post-info">
-                    <h2>Lorem ipsum dolor sit amet</h2>
-                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    <a>Read More</a>
-                </div>
-            </div>
-            <div class="post" data-post-type="other" data-hidden="false">
-                <img src="https://unsplash.it/800/400" alt="Placeholder Image" />
-                <div class="post-info">
-                    <h2>Lorem ipsum dolor sit amet</h2>
-                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    <a>Read More</a>
-                </div>
+            {{/each}}
+
+            <div class="no-posts">
+                <h2>No posts found</h2>
+                <p>There are no posts that match the selected filter, check back later and I may have something!</p>
             </div>
         </div>
     </main>

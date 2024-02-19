@@ -2,6 +2,7 @@ import { resolve } from 'path';
 import handlebars from 'vite-plugin-handlebars';
 import { getBlogFiles } from './build-utils/get-blog-files';
 import { getParsedMarkdown } from './build-utils/get-parsed-markdown';
+import { getHandlebarsConfig } from './build-utils/get-handlebars-context';
 
 /**
  * Configures the dev server to redirect requests without a trailing slash to the
@@ -45,7 +46,7 @@ function notFoundPlugin() {
             return () => {
                 server.middlewares.use((req, res, next) => {
                     if (!res.req.url.endsWith('.html')) {
-                        res.writeHead(301, {
+                        res.writeHead(302, {
                             Location: '/not-found',
                         });
                         res.end();
@@ -67,10 +68,10 @@ export default {
         // https://github.com/alexlafroscia/vite-plugin-handlebars
         handlebars({
             partialDirectory: resolve(__dirname, 'src/partials'),
-            context: getParsedMarkdown,
+            context: getHandlebarsConfig,
         }),
         appendTrailingSlash(),
-        // notFoundPlugin(),
+        notFoundPlugin(),
     ],
     assetsInclude: [
         // This allows us to import the HTML files in the web components
@@ -88,7 +89,7 @@ export default {
         rollupOptions: {
             input: {
                 main: resolve(__dirname, 'index.html'),
-                notFound: resolve(__dirname, 'not-found.html'),
+                notFound: resolve(__dirname, 'not-found/index.html'),
                 ...getBlogFiles(),
             },
         }
