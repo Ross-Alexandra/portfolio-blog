@@ -28,7 +28,10 @@
         <div class="content posts">
             {{#each config.posts}}
                 <div class="post" data-post-type="{{article_type}}" data-hidden="false">
-                    <img src="{{thumbnail}}" alt="Article Thumbnail" />
+                    <div class="thumbnail">
+                        <img src="{{thumbnail}}" alt="Article Thumbnail" />
+                        <img src="{{thumbnail}}" class="thumbnail-blur" />
+                    </div>
                     <div class="post-info">
                         <h4>{{category}}</h4>
                         <h2>{{title}}</h2>
