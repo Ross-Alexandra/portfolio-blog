@@ -1,0 +1,9 @@
+{
+    "title": "Why use a framework?",
+    "article_type": "debrief",
+    "category": "Tech Debrief",
+    "authored_on": "2024-02-20",
+    "summary": "When building web-apps in the past, I've always leaned into using a framework for the convenience they provide. For my blog, I decided that I was going to explore what building without a framework looks like to see if I can justify needing one in the first place.",
+    "thumbnail": "/blog-thumbnails/why-use-a-framework.png",
+    "link": "/blogs/why-use-a-framework"
+}

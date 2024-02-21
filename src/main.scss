@@ -176,6 +176,7 @@ hr {
         display: grid;
         grid-auto-flow: row;
         gap: 1rem;
+        align-self: start;
 
         .thumbnail {
             position: relative;

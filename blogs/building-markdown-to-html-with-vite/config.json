@@ -1,0 +1,9 @@
+{
+    "title": "Building Markdown to HTML with Vite",
+    "article_type": "other",
+    "category": "Code",
+    "authored_on": "2024-02-19",
+    "summary": "I find that I often need to write simple pages of content in my projects. Usually I'd just reach for writing some custom HTML, but while I was working on this blog, I realized that Markdown might be a better choice for this. In this article, I show you how I build my markdown files directly to HTML, which can then be served statically!",
+    "thumbnail": "/blog-thumbnails/building-markdown-to-html-with-vite.png",
+    "link": "/blogs/building-markdown-to-html-with-vite"
+}
