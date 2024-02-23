@@ -29,7 +29,9 @@
             {{#each config.posts}}
                 <div class="post" data-post-type="{{article_type}}" data-hidden="false">
                     <div class="thumbnail">
-                        <img src="{{thumbnail}}" alt="Article Thumbnail" />
+                        <a href="{{ link }}">
+                            <img src="{{thumbnail}}" alt="Article Thumbnail" />
+                        </a>
                         <img src="{{thumbnail}}" class="thumbnail-blur" />
                     </div>
                     <div class="post-info">
