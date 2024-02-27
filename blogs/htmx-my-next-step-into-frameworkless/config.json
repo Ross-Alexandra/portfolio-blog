@@ -2,7 +2,7 @@
     "title": "HTMX: My next step into frameworkless web development",
     "article_type": "exploration",
     "category": "Tech Exploration Plan",
-    "authored_on": "2024-02-23",
+    "authored_on": "2024-02-27",
     "summary": "After building this blog site without a framework, I'm very excited to explore building web applications without a framework. Something I realized while building the site is that using HTML to record the state of the application is a very intuitive way to build (at the very least) simple web apps. I want to explore using HTMX, as this idea appears to be at it's core.",
     "thumbnail": "/blog-thumbnails/htmx-my-next-step-into-frameworkless.png",
     "link": "/blogs/htmx-my-next-step-into-frameworkless"
