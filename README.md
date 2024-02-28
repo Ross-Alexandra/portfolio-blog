@@ -1,5 +1,5 @@
 # My Blog
-Write something here about the blog and why it exists.
+The code for my Blog! To see the blog, go to [blog.rossalexandra.com](https://blog.rossalexandra.com)
 
 ## Structure
 - `index.html` - The entry point for the root page of the blog.
@@ -19,4 +19,6 @@ Write something here about the blog and why it exists.
         used in blog posts. These are loaded dynamically when a blog post is loaded
         to reduce the first-load time of the blog home page & of each individual
         blog post (as the globals should be cached by then).
-
+- `blogs` - A directory containing a directory of markdown & config files for
+each blog post. The markdown files contain the content of the blog post, and the
+config files contain metadata about the blog post.
