@@ -173,10 +173,10 @@ hr {
     }
 
     .post {
-        display: grid;
-        grid-auto-flow: row;
+        display: flex;
+        flex-direction: column;
         gap: 1rem;
-        align-self: start;
+        height: 100%;;
 
         .thumbnail {
             position: relative;
@@ -196,6 +196,10 @@ hr {
         }
 
         .post-info {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+
             h4 {
                 font-size: 1.6rem;
                 color: $accent-color;
@@ -211,6 +215,10 @@ hr {
 
             h2 {
                 margin-bottom: 0px;
+            }
+
+            a {
+                margin-top: auto;
             }
         }
 
@@ -243,7 +251,7 @@ hr {
             // Remove the styling by resetting it for all subsequent non-hidden
             // posts.
             &[data-hidden="false"] ~ [data-hidden="false"] {
-                display: grid;
+                display: flex;
         
                 img {
                     width: 100%;

@@ -1,0 +1,9 @@
+{
+    "title": "Building an IP Lookup tool with HTMX & Symfony",
+    "article_type": "debrief",
+    "category": "Tech Debrief",
+    "authored_on": "2024-03-22",
+    "summary": "Having now built a static blog, I was curious to see how I could use HTMX to build a dynamic web application. To test this, I decided to re-write a tool which I had built in the past using React/Flask: an IP Lookup tool. I did this re-write using HTMX and Symfony in order to explore how HTMX could be used to build dynamic web applications. This article will cover the process of building this tool, and the lessons I learned along the way.",
+    "thumbnail": "/blog-thumbnails/building-an-ip-lookup-tool-with-htmx-and-symfony.png",
+    "link": "/blogs/building-an-ip-lookup-tool-with-htmx-and-symfony"
+}
